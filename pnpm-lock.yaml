@@ -1,0 +1,16 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  d3.js:
+    specifier: 0.0.2-security
+    version: 0.0.2-security
+
+packages:
+
+  /d3.js@0.0.2-security:
+    resolution: {integrity: sha512-tSm4YPzBhAZpGQGcxXHdQ9L5zanfel8Rnesff4UKDvvbRTDLUC38caf7KYuU90K72AAhCvUJshsczCC3YCZubQ==}
+    dev: false
