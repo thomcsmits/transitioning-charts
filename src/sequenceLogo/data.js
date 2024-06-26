@@ -1,4 +1,3 @@
-
 // generate random data
 function generateSeqData(n = 10) {
     const data = [];
@@ -26,4 +25,4 @@ function generateSeqDataSingle() {
 }
 
 const data = generateSeqData();
-console.log(data)
+console.log(data);
