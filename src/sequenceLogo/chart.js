@@ -37,8 +37,20 @@ const y = d3.scaleLinear()
 svg.append("g")
     .call(d3.axisLeft(y))
 
+// // rectangles
+// svg.selectAll("bar")
+//     .data(data)
+//     .enter()
+//     .append("rect")
+//         .attr("x", function(d) {return x(d.x)})
+//         .attr("y", function(d) {return y(d.total)})
+//         .attr("width", x.bandwidth())
+//         .attr("height", function(d) {return height - y(d.total)})
+//         .attr("fill", "#69b3a2")
+
+
 // rectangles
-svg.selectAll("bar")
+svg.selectAll("bars")
     .data(data)
     .enter()
     .append("rect")
@@ -48,3 +60,24 @@ svg.selectAll("bar")
         .attr("height", function(d) {return height - y(d.total)})
         .attr("fill", "#69b3a2")
 
+
+const subgroups = ['A', 'G', 'C', 'T'];
+const colorscale = ['#21994e', '#f7b536', '#345e95', '#d83541']
+let color = d3.scaleOrdinal()
+    .domain(subgroups)
+    .range(colorscale)
+
+var stackedData = d3.stack().keys(subgroups)(data)
+
+svg.append("g")
+    .selectAll("bars")
+    .data(stackedData)
+    .enter().append("g")
+      .attr("fill", function(d) {return color(d.key)})
+      .selectAll("rect")
+      .data(function(d) {return d})
+      .enter().append("rect")
+        .attr("x", function(d) {return x(d.data.x)})
+        .attr("y", function(d) {return y(d[1])})
+        .attr("width",x.bandwidth())
+        .attr("height", function(d) {return y(d[0]) - y(d[1])})
