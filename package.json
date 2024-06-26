@@ -1,16 +1,19 @@
 {
   "name": "transitioning-charts",
-  "version": "1.0.0",
+  "author": "Thomas C. Smits",
   "private": true,
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
+  "version": "0.0.0",
   "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "d3.js": "0.0.2-security"
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
   }
 }
