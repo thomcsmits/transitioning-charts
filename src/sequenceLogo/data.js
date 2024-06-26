@@ -1,8 +1,10 @@
 // generate random data
-function generateSeqData(n = 10) {
+export function generateSeqData(n = 10) {
     const data = [];
     for (let i = 0; i < n; i++) {
-        data.push(generateSeqDataSingle());
+        const dataSingle = generateSeqDataSingle();
+        dataSingle['x'] = i;
+        data.push(dataSingle);
     }
     return data;
 }
@@ -20,9 +22,6 @@ function generateSeqDataSingle() {
         }
         data[l] = r_int;
     }
-    data['Total'] = data['A'] + data['G'] + data['C'] + data['T'];
+    data['total'] = data['A'] + data['G'] + data['C'] + data['T'];
     return data;
 }
-
-const data = generateSeqData();
-console.log(data);
