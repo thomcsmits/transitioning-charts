@@ -21,6 +21,7 @@ function generateSeqDataSingle() {
         }
         data[l] = r_int;
     }
+    data['Total'] = data['A'] + data['G'] + data['C'] + data['T'];
     return data;
 }
 
