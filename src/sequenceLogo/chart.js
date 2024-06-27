@@ -60,15 +60,8 @@ const stackedData = changeToStack(data);
 const stackedDataUnpacked = stackedData.flat();
 // var stackedData = d3.stack().keys(subgroups)(data);
 
-svg.append("g")
-    .selectAll("bars")
-    .data(stackedDataUnpacked)
-    .enter().append("rect")
-        .attr("x", function(d) {return x(d.x)})
-        .attr("y", function(d) {return y(d.ymax)})
-        .attr("width", x.bandwidth())
-        .attr("height", function(d) {return y(d.ymin) - y(d.ymax)})
-        .attr("fill", function(d) {return color(d.letter)})
+
+// STACKED BAR
 
 // svg.append("g")
 //     .selectAll("bars")
@@ -79,6 +72,244 @@ svg.append("g")
 //         .attr("width", x.bandwidth())
 //         .attr("height", function(d) {return y(d.ymin) - y(d.ymax)})
 //         .attr("fill", function(d) {return color(d.letter)})
+
+
+
+// SEQUENCE 
+// svg.append("g")
+//     .selectAll("bars")
+//     .data(stackedDataUnpacked)
+//     .enter().append("rect")
+//         .attr("x", function(d) {return x(d.x)})
+//         .attr("y", function(d) {return y(d.ymax)})
+//         .attr("width", x.bandwidth())
+//         .attr("height", function(d) {return y(d.ymin) - y(d.ymax)})
+//         .attr("fill", function(d) {return color(d.letter)})
+
+
+
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x) + x.bandwidth() / 2; }) // Center the letter horizontally
+//         .attr("y", function(d) { return y(d.ymax); }) // Position the letter at the top of the segment
+//         .attr("dy", function(d) { return (y(d.ymin) - y(d.ymax)) / 2; }) // Center the letter vertically within the segment
+//         .attr("text-anchor", "middle") // Center the text
+//         .attr("alignment-baseline", "middle") // Center the text vertically
+//         .text(function(d) { return d.letter; })
+//         .style("font-size", function(d) {
+//             // Calculate font size based on the height of the segment
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             return `${segmentHeight}px`;
+//         })
+//         .attr("fill", function(d) { return color(d.letter); }); // Use color scale for text color
+
+
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x); })
+//         .attr("y", function(d) { return y(d.ymax); })
+//         .attr("dy", "0") // Adjust if needed to position text correctly within the rectangle
+//         .attr("text-anchor", "start") // Anchor text to the start
+//         .attr("alignment-baseline", "hanging") // Align text to the top of the rectangle
+//         .text(function(d) { return d.letter; })
+//         .attr("transform", function(d) {
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             const scaleX = x.bandwidth() / this.getBBox().width;
+//             const scaleY = segmentHeight / this.getBBox().height;
+//             const scale = Math.min(scaleX, scaleY); // Scale uniformly
+//             return `translate(${x(d.x)}, ${y(d.ymax)}) scale(${scale})`;
+//         })
+//         .style("fill", function(d) { return color(d.letter); });
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x); })
+//         .attr("y", function(d) { return y(d.ymax); })
+//         .attr("text-anchor", "middle") // Center the text horizontally within the segment
+//         .attr("alignment-baseline", "hanging") // Align text to the top of the rectangle
+//         .text(function(d) { return d.letter; })
+//         .style("fill", function(d) { return color(d.letter); })
+//         .style("font-size", function(d) {
+//             // Calculate font size based on the height of the segment
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             return `${segmentHeight}px`;
+//         })
+//         .attr("transform", function(d) {
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             const segmentWidth = x.bandwidth();
+//             // Calculate scale factor to fit text within the width of the segment
+//             const scale = Math.min(segmentWidth / this.getBBox().width, segmentHeight / this.getBBox().height);
+//             const offsetX = x(d.x) + segmentWidth / 2; // Center horizontally
+//             const offsetY = y(d.ymax) + segmentHeight / 2; // Center vertically
+//             return `translate(${offsetX}, ${offsetY}) scale(${scale}) translate(-${this.getBBox().width / 2}, -${this.getBBox().height / 2})`;
+//         });
+
+
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x) + x.bandwidth() / 2; }) // Center the letter horizontally
+//         .attr("y", function(d) { return y(d.ymax); }) // Position the letter at the top of the segment
+//         .attr("text-anchor", "middle") // Center the text horizontally
+//         .attr("alignment-baseline", "hanging") // Align text to the top of the rectangle
+//         .text(function(d) { return d.letter; })
+//         .style("fill", function(d) { return color(d.letter); })
+//         .style("font-size", function(d) {
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             return `${segmentHeight}px`;
+//         })
+//         .attr("transform", function(d) {
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             const segmentWidth = x.bandwidth();
+//             // Set font size first to get correct bounding box
+//             d3.select(this).style("font-size", `${segmentHeight}px`);
+//             const bbox = this.getBBox();
+//             const scaleX = segmentWidth / bbox.width;
+//             const scaleY = segmentHeight / bbox.height;
+//             const scale = Math.min(scaleX, scaleY);
+//             const offsetX = x(d.x) + segmentWidth / 2 - bbox.width / 2 * scale;
+//             const offsetY = y(d.ymax) + segmentHeight / 2 - bbox.height / 2 * scale;
+//             return `translate(${offsetX}, ${offsetY}) scale(${scale})`;
+//         });
+
+// const temp = svg.append("g")
+//     .selectAll("g")
+//     .data(stackedDataUnpacked)
+//     .enter().append("g")
+//         .attr("transform", function(d) { 
+//             return `translate(${x(d.x)}, ${y(d.ymax)})`; 
+//         })
+//     .each(function(d) {
+//         const group = d3.select(this);
+//         group.append("text")
+//             .attr("x", 0)
+//             .attr("y", 0)
+//             .attr("text-anchor", "start")
+//             .attr("alignment-baseline", "hanging")
+//             .text(d.letter)
+//             .style("fill", color(d.letter))
+//             .style("font-size", function(d) {
+//                 // Calculate font size based on the height of the segment
+//                 const segmentHeight = y(d.ymin) - y(d.ymax);
+//                 return `${segmentHeight}px`;
+//             })
+//             .attr("transform", function(d) {
+//                 const segmentHeight = y(d.ymin) - y(d.ymax);
+//                 const segmentWidth = x.bandwidth();
+//                 // Set font size first to get correct bounding box
+//                 d3.select(this).style("font-size", `${segmentHeight}px`);
+//                 const bbox = this.getBBox();
+//                 const scaleX = segmentWidth / bbox.width;
+//                 const scaleY = segmentHeight / bbox.height;
+//                 const scale = Math.min(scaleX, scaleY);
+//                 return `scale(${scale})`;
+//             });
+//     });
+
+
+// console.log(temp)
+
+
+
+
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x); }) // Position at the left side of the rectangle
+//         .attr("y", function(d) { return y(d.ymax); }) // Position at the top of the rectangle
+//         .attr("text-anchor", "start") // Align text to the start
+//         .attr("alignment-baseline", "hanging") // Align text to the top of the rectangle
+//         .text(function(d) { return d.letter; })
+//         .style("fill", function(d) { return color(d.letter); })
+//         .style("font-size", function(d) {
+//             if (d.value === 0) {
+//                 return "0px";
+//             } else {
+//                 return "10px";
+//             }
+//         })
+//         .each(function(d) {
+//             if (d.value !== 0) {
+//                 const bbox = this.getBBox();
+//                 const scaleX = x.bandwidth() / bbox.width;
+//                 const scaleY = (y(d.ymin) - y(d.ymax)) / bbox.height;
+//                 d3.select(this)
+//                     .attr("transform", `translate(${x(d.x)}, ${y(d.ymax)}) scale(${scaleX}, ${scaleY})`)
+//                     .attr("x", 0)
+//                     .attr("y", 0);
+//             }
+//         })
+
+const temp = svg.append("g")
+    .selectAll("text")
+    .data(stackedDataUnpacked)
+    .enter().append("text")
+        .attr("x", function(d) { return x(d.x); }) // set to left
+        .attr("y", function(d) { return y(d.ymax); }) // set to top
+        .attr("text-anchor", "start") // align to left
+        .attr("alignment-baseline", "hanging") // align to top
+        .text(function(d) { return d.letter; })
+        .style("fill", function(d) { return color(d.letter); })
+        .style("font-family", "monospace")
+        .style("font-size", function(d) {
+            if (d.value === 0) {
+                return "0px";
+            } else {
+                return `95px`;
+            }
+        })
+        .each(function(d) {
+            if (d.value !== 0) {
+                const segmentHeight = y(d.ymin) - y(d.ymax);
+                const textHeight = this.getBBox().height;
+                const scaleY = segmentHeight / textHeight;
+                d3.select(this)
+                    .attr("transform", `translate(${x(d.x)}, ${y(d.ymax)}) scale(1, ${scaleY*1.5})`)
+                    .attr("x", 0)
+                    .attr("y", 0);
+            }
+        });
+
+
+  // .style("font-size", function(d) {
+        //     // Set font size to fill the y-space of the rectangle
+        //     const segmentHeight = y(d.ymin) - y(d.ymax);
+        //     return `${segmentHeight}px`;
+        // })
+
+console.log(stackedDataUnpacked)
+// const temp = svg.append("g")
+//     .selectAll("text")
+//     .data(stackedDataUnpacked)
+//     .enter().append("text")
+//         .attr("x", function(d) { return x(d.x); }) // Position at the left side of the rectangle
+//         .attr("y", function(d) { return y(d.ymax); }) // Position at the top of the rectangle
+//         .attr("text-anchor", "start") // Align text to the start
+//         .attr("alignment-baseline", "hanging") // Align text to the top of the rectangle
+//         .text(function(d) { return d.letter; })
+//         .style("fill", function(d) { return color(d.letter); })
+//         .style("font-size", function(d) {
+//             // Set an initial font size based on the height of the rectangle
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             return `${segmentHeight * 1.2}px`; // Scale up a bit to ensure the text fills the space
+//         })
+//         .each(function(d) {
+//             const segmentHeight = y(d.ymin) - y(d.ymax);
+//             const bbox = this.getBBox();
+//             const scaleY = segmentHeight / bbox.height;
+//             d3.select(this).attr("transform", `scale(1, ${scaleY})`);
+//         });
+
+
+
+// old
 
 // svg.append("g")
 //     .selectAll("bars")
