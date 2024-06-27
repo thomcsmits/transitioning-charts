@@ -3,7 +3,6 @@ export function generateSeqData(n = 10) {
     const data = [];
     for (let i = 0; i < n; i++) {
         const dataSingle = generateSeqDataSingle();
-        dataSingle['x'] = i;
         data.push(dataSingle);
     }
     return data;
@@ -22,6 +21,18 @@ function generateSeqDataSingle() {
         }
         data[l] = r_int;
     }
-    data['total'] = data['A'] + data['G'] + data['C'] + data['T'];
     return data;
+}
+
+export function extendSeqData(data) {
+    const dataExtended = [];
+    for (let i = 0; i < data.length; i++) {
+        const dataCounts = data[i];
+        const dataExtendedSingle = {};
+        dataExtendedSingle['counts'] = dataCounts;
+        dataExtendedSingle['total'] = dataCounts['A'] + dataCounts['G'] + dataCounts['C'] + dataCounts['T'];
+        dataExtendedSingle['x'] = i;
+        dataExtended.push(dataExtendedSingle);
+    }
+    return dataExtended;
 }
