@@ -36,3 +36,26 @@ export function extendSeqData(data) {
     }
     return dataExtended;
 }
+
+export function changeToStack(data) {
+    const dataStack = [];
+    for (const d of data) {
+        const dArr = [];
+
+        for (const key in d.counts) {
+            dArr.push( {'letter': key, 'value': d.counts[key], 'x': d.x} )
+        }
+        dArr.sort(function(a,b) {
+            return a.value - b.value;
+        });
+
+        let minY = 0;
+        for (const arr of dArr) {
+            arr['ymin'] = minY;
+            minY += arr.value;
+            arr['ymax'] = minY;
+        }
+        dataStack.push(dArr);
+    }
+    return dataStack;
+}
