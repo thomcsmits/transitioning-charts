@@ -7,7 +7,8 @@ const height = 300;
 const margin = {left: 30, right: 30, top: 30, bottom: 30};
 
 // data
-const data = extendSeqData(generateSeqData());
+const dataRaw = generateSeqData();
+const data = extendSeqData(dataRaw);
 const subgroups = ['A', 'G', 'C', 'T'];
 const stackedData = changeToStack(data);
 const stackedDataUnpacked = stackedData.flat();
@@ -116,3 +117,36 @@ function getSeqLogo(svgSeqLogo) {
 }
 getSeqLogo(svgSeqLogoTop);
 getSeqLogo(svgSeqLogoFull)
+
+
+// data
+const tableElement = document.getElementById('seqlogo-data');
+const dataDisplay = dataRaw.map((d, i) => [i, d.A, d.G, d.C, d.T, d.A+d.G+d.C+d.T]);
+
+// create table elements
+const tbl = document.createElement('table');
+const thead = document.createElement('thead')
+const tbody = document.createElement('tbody')
+
+// add table header
+const theadtitle = ['x', 'A', 'G', 'C', 'T', 'y total']
+const tr = thead.insertRow();
+for (let j = 0; j < 6; j++) {
+    const th = tr.insertCell();
+    th.appendChild(document.createTextNode(theadtitle[j]));
+    th.style.border = '4px solid black';
+}
+
+// add table body
+for (let i = 0; i < data.length; i++) {
+    const tr = tbody.insertRow();
+    for (let j = 0; j < 6; j++) {
+        const td = tr.insertCell();
+        td.appendChild(document.createTextNode(dataDisplay[i][j]));
+        td.style.border = '1px solid black';
+    }
+}
+
+tbl.appendChild(thead);
+tbl.append(tbody);
+tableElement.appendChild(tbl);
