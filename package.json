@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
-  "homepage": "https://thomcsmits.github.io/TransitioningCharts/",
+  "homepage": "https://thomcsmits.github.io/transitioning-charts/",
   "type": "module",
   "scripts": {
     "dev": "vite",
