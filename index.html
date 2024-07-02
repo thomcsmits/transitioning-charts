@@ -28,7 +28,7 @@
       </li> 
       <li>Sketch the chart
         <ul>
-          <li>SSketch the general appearance of the chart as accurate as possible.</li>
+          <li>Sketch the general appearance of the chart as accurate as possible.</li>
           <li>Focus on the visual elements. The chart does not need to follow the exact data.</li>
           <li>Use colors if possible.</li>
         </ul>
@@ -37,25 +37,115 @@
     <h4>Description</h4>
     <div id="seqlogo-top" role="img" alt="Alt is omitted on purpose for this study"></div>
     <p>
-      This is a chart with a x-axis and y-axis. The chart is filled with four letters, 'A', 'G', 'C', and 'T'.
-      Each has a specific color (A is green, G is yellow, C is blue, T is red). They are arranged in columns, stacked on top of each other.
-      The x-axis ranges from 0 to 9, and there are ten columns, one corresponding to each x-axis value. The y-axis ranges from 0 to 260.
+      Imagine a sequence logo plot as a series of vertical bars that are stacked on top of each other, where each bar represents a position in a sequence. Here’s how you can visualize and draw it:
+      <ol>
+        <li>
+          <b>Vertical Bars:</b> The chart is made up of vertical bars, each corresponding to a position along the x-axis (labeled from 0 to 9 in your case). These bars represent the data at each position.
+        </li>
+        <li>
+          <b>Stacked Segments:</b> Each bar is divided into colored segments. The segments represent different types of data:
+          <ul>
+            <li><b>Green Segment:</b> For the letter A.</li>
+            <li><b>Yellow Segment:</b> For the letter G.</li>
+            <li><b>Blue Segment:</b> For the letter C.</li>
+            <li><b>Red Segment:</b> For the letter T.</li>
+          </ul>
+          The height of each segment in the bar corresponds to the proportion of that letter at that position.
+        </li>
+        <li>
+          <b>Ordering of Segments:</b> Within each bar, the segments are ordered from the highest proportion at the top to the lowest at the bottom. So, if A is the most frequent letter at a position, the green segment will be on top.
+        </li>
+        <li>
+          <b>Bar Height:</b> The total height of each bar represents the sum of all segments (A, G, C, T) at that position, reflecting the total value for that x-coordinate.
+        </li>
+        <li>
+          <b>Information Density:</b> The overall height of the bar reflects the total amount of information at that position, which can vary from position to position.
+        </li>
+        <li>
+          <b>Visual Pattern:</b> As you move from left to right across the x-axis, you'll see variations in the height and color distribution of the segments in the bars, reflecting changes in the data.
+        </li>
+      </ol>
+      In summary, each vertical bar has stacked colored segments that show the frequency of different letters at each position, ordered from most to least frequent. The height of the bar indicates the total value at that position.
     </p>
-    <h4>Task</h4>
-    <p>Sketch the Chart</p>
+    <h4>Pause here to sketch the chart.</h4>
     <h3>Gradual introduction</h3>
     <p>
       We now introduce the sequence logo in three steps. We start with a bar chart, then transition to a stacked bar chart, before introducing the sequence logo.
+      Base the sketches for these charts solely on the descriptions you hear here, and not on the previous description. 
     </p>
+    <h4>Tasks</h4>
+    For each gradual chart, first read the description, then sketch the chart. The tasks are the same as in the direct approach. They are repeated here.
+    <ul>
+      <li>Read the description
+        <ul>
+          <li>You can read the description a maximum number of three times.</li>
+          <li>You can take as much time to take in the data as you want.</li>
+          <li>You can not access the description or data after starting to draw.</li>
+        </ul> 
+      </li> 
+      <li>Sketch the chart
+        <ul>
+          <li>Sketch the general appearance of the chart as accurate as possible.</li>
+          <li>Focus on the visual elements. The chart does not need to follow the exact data.</li>
+          <li>Use colors if possible.</li>
+        </ul>
+      </li>
+    </ul>
     <h4>Bar Chart</h4>
+    <h5>Description</h5>
     <div id="seqlogo-barchart" role="img" alt="Alt is omitted on purpose for this study"></div>
     <p>
-      This is a bar chart. 
+      Imagine a series of vertical bars arranged side by side on a horizontal axis. Each bar represents a different position along the x-axis, from 0 to 9. The height of each bar corresponds to the total value for that position, given by `y_total`.
+
+      <b>Visual Elements:</b>
+      <ol>
+        <li><b>X-Axis:</b> A horizontal line at the bottom, labeled from 0 to 9.</li>
+        <li><b>Bars:</b> Ten vertical bars, one for each x-value. The height of each bar corresponds to the value of `y_total` for that x-position. Each bar is the same color, black, and its height varies based on the `y_total` value.</li>
+      </ol>
     </p>
+    <h5>Pause here to sketch the chart.</h5>
     <h4>Stacked Bar Chart</h4>
+    <h5>Description</h5>
     <div id="seqlogo-stacked-barchart" role="img" alt="Alt is omitted on purpose for this study"></div>
+    <p>
+      To transform the bar chart into a stacked bar chart, you break each black bar into four segments stacked on top of each other, with each segment representing a different letter: A, G, C, and T. The height of each segment within a bar corresponds to the value of A, G, C, and T, respectively.
+
+      <br><br><b>Visual Elements:</b>
+      <ol>
+        <li><b>Bars:</b> The bars remain vertical and side by side. Each bar is divided into four colored segments:
+          <ol>
+            <li><b>Green Segment:</b> Represents A.</li>
+            <li><b>Yellow Segment:</b> Represents G.</li>
+            <li><b>Blue Segment:</b> Represents C.</li>
+            <li><b>Red Segment:</b> Represents T.</li>
+          </ol>
+        </li>
+        <li><b>Order:</b> The segments are stacked from bottom to top in the order of A, G, C, and T.</li>
+      </ol>
+    </p>
+    <h5>Pause here to sketch the chart.</h5>
     <h4>Sequence Logo</h4>
+    <h5>Description</h5>
     <div id="seqlogo-full" role="img" alt="Alt is omitted on purpose for this study"></div>
+    <p>
+      In a sequence logo plot, each position along the x-axis is depicted as a stack of letters, with the height of each letter representing its frequency. The letters are arranged in order of their predominance, with the most frequent letter at the top.
+
+      <br><br><b>Visual Elements:</b>
+      <ol>
+        <li><b>X-Axis:</b> A horizontal line labeled from 0 to 9.</li>
+        <li><b>Stacks:</b> At each x-position, you have a vertical stack where each letter is represented by a different height:
+          <ol>
+            <li><b>Green (A)</b></li>
+            <li><b>Yellow (G)</b></li>
+            <li><b>Blue (C)</b></li>
+            <li><b>Red (T)</b></li>
+          </ol>
+        </li>
+        <li><b>Ordering:</b> The letters are stacked in order of frequency, from most frequent at the top to least frequent at the bottom.</li>
+        <li><b>Height Representation:</b> The total height of the stack at each position is proportional to the `y_total` value, and the relative heights of the letters show their frequency at each position.</li>
+      </ol>
+    </p>
+    <h5>Pause here to sketch the chart.</h5>
     <script src="./src/sequenceLogo/chart.js" type="module"></script>
     <footer>
       <p>This page is created by the <a href="http://hidivelab.org/">HIDIVE Lab</a> (2024).</p>
