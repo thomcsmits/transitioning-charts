@@ -1,5 +1,5 @@
 import * as d3 from "../../node_modules/d3";
-import { generateSeqData, extendSeqData, changeToStack } from "./data";
+import { generateSeqData, extendSeqData, changeToStack, returnTestData } from "./data";
 
 // sizing
 const width = 600;
@@ -7,7 +7,8 @@ const height = 300;
 const margin = {left: 30, right: 30, top: 30, bottom: 30};
 
 // data
-const dataRaw = generateSeqData();
+// const dataRaw = generateSeqData();
+const dataRaw = returnTestData();
 const data = extendSeqData(dataRaw);
 const subgroups = ['A', 'G', 'C', 'T'];
 const stackedData = changeToStack(data);

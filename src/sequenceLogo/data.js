@@ -59,3 +59,19 @@ export function changeToStack(data) {
     }
     return dataStack;
 }
+
+export function returnTestData() {
+    const data = [
+        { A: 95, G: 31, C: 0, T: 45 },
+        { A: 0, G: 71, C: 42, T: 94 },
+        { A: 0, G: 0, C: 19, T: 45 },
+        { A: 33, G: 6, C: 38, T: 0 },
+        { A: 56, G: 13, C: 0, T: 0 },
+        { A: 3, G: 47, C: 0, T: 0 },
+        { A: 58, G: 0, C: 20, T: 66 },
+        { A: 47, G: 32, C: 0, T: 0 },
+        { A: 0, G: 0, C: 0, T: 99 },
+        { A: 3, G: 0, C: 90, T: 40 }
+    ]
+    return data;
+}
