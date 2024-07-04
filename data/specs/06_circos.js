@@ -8,8 +8,8 @@ var spec = {
   "tracks": [
     {
       "data": {
-        "type": "vector",
-        "url": "https://resgen.io/api/v1/tileset_info/?d=VLFaiSVjTjW6mkbjRjWREA",
+        "type": "bigwig",
+        "url": "https://s3.amazonaws.com/gosling-lang.org/data/Astrocytes-insertions_bin100_RIPnorm.bw",
         "column": "position",
         "value": "peak"
       },
