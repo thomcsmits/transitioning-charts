@@ -2,7 +2,7 @@ var spec = {
   "layout": "circular",
   "static": true,
   "spacing": 1,
-  "centerRadius": 0.3,
+  "centerRadius": 0.8,
   "alignment": "stack",
   "tracks": [
     {

@@ -1,5 +1,4 @@
 var spec = {
-  "title": "Circos",
   "description": "http://circos.ca/intro/genomic_data/",
   "layout": "circular",
   "static": true,

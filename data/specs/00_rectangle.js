@@ -2,7 +2,6 @@ var spec = {
   "layout": "linear",
   "static": true,
   "spacing": 1,
-  "centerRadius": 0.3,
   "alignment": "stack",
   "tracks": [
     {
