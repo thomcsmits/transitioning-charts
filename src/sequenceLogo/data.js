@@ -1,4 +1,9 @@
 // generate random data
+/**
+ * Generate random sequence position frequency matrix data.
+ * @param {*} n number of data points
+ * @returns array of objects with keys A, G, C, and T, and integer values.
+ */
 export function generateSeqData(n = 10) {
     const data = [];
     for (let i = 0; i < n; i++) {
@@ -8,6 +13,13 @@ export function generateSeqData(n = 10) {
     return data;
 }
 
+/**
+ * Generate an a single sequence observation.
+ * Creates an object with keys A, G, C, and T.
+ * Each with a random integer between 0 and 100.
+ * The integer is 0 with a 30% chance.
+ * @returns object with keys A, G, C, and T, and integer values.
+ */
 function generateSeqDataSingle() {
     const data = {};
 
@@ -24,6 +36,12 @@ function generateSeqDataSingle() {
     return data;
 }
 
+/**
+ * Format sequence data to include counts, total and x.
+ * Groups A, G, C and T into counts object. Adds total and x.
+ * @param {*} data array of objects with keys A, G, C, and T, and integer values.
+ * @returns array of objects with counts (with, A/G/C/T), total and x.
+ */
 export function extendSeqData(data) {
     const dataExtended = [];
     for (let i = 0; i < data.length; i++) {
@@ -37,6 +55,12 @@ export function extendSeqData(data) {
     return dataExtended;
 }
 
+/**
+ * Stack sequence data (gives more flexibility than d3.stack).
+ * Saves letter, value, x, ymin and ymax for each entry.
+ * @param {*} data object with keys A, G, C, and T, and integer values.
+ * @returns Array with letter, value and x for each individual letter. 4x length of data.
+ */
 export function changeToStack(data) {
     const dataStack = [];
     for (const d of data) {
@@ -60,6 +84,10 @@ export function changeToStack(data) {
     return dataStack;
 }
 
+/**
+ * Returns fixed random dataset created with generateSeqData.
+ * @returns array of objects with keys A, G, C, and T, and integer values.
+ */
 export function returnTestData() {
     const data = [
         { A: 95, G: 31, C: 0, T: 45 },
