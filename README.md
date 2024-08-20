@@ -1,7 +1,7 @@
 # Transitioning Charts
 This repo creates a simple HTML page which is used in a study on introducing new genomics chart types to a blind individual.
-> [!NOTE]
-> This repo is a work in progress.
+
+The preprint for this can be found [here](https://osf.io/preprints/osf/v7mxz).
 
 ## How to run
 To run:
