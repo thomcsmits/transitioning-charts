@@ -32,7 +32,7 @@ let color = d3.scaleOrdinal()
     .range(colorscale)
 
 
-function getChartBase(element) {
+export function getChartBase(element) {
     // append an svg object to the body of the page
     let svg = d3.select(element)
     .append("svg")
@@ -151,3 +151,144 @@ for (let i = 0; i < data.length; i++) {
 tbl.appendChild(thead);
 tbl.append(tbody);
 tableElement.appendChild(tbl);
+
+
+// Bar chart setup
+
+function setUp(data, stackedDataUnpacked) {
+    const animation = getChartBase('#animation');
+    const dataNew = [...data, ...data,...data,...data]
+    dataNew.sort((a,b) => a.x - b.x)
+
+    // add letters
+    animation.append("g")
+        .selectAll("text")
+        .data(stackedDataUnpacked)
+        .enter().append("text")
+            .attr("x", function(d) { return x(d.x); }) // set to left
+            .attr("y", function(d) { return y(d.ymax); }) // set to top
+            .attr("text-anchor", "start") // align to left
+            .attr("alignment-baseline", "hanging") // align to top
+            .text(function(d) { return d.letter; })
+            .style("fill", function(d) { return color(d.letter); })
+            .style("font-family", "monospace")
+            .style("font-size", function(d) {
+                if (d.value === 0) {
+                    return "0px";
+                } else {
+                    return `95px`;
+                }
+            })
+            .each(function(d) {
+                if (d.value !== 0) {
+                    const scaleY = (y(d.ymin) - y(d.ymax)) / this.getBBox().height;
+                    d3.select(this)
+                        .attr("transform", `translate(${x(d.x)}, ${y(d.ymax)}) scale(1, ${scaleY*1.5})`)
+                        .attr("x", 0)
+                        .attr("y", 0);
+                }
+            })
+
+    // add black bars
+    animation.selectAll("rect")
+        .data(dataNew)
+        .enter()
+        .append("rect")
+            .attr("x", function(d) { return x(d.x); })
+            .attr("y", function(d) { return y(d.total); })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d) { return height - y(d.total); })
+            .attr("fill", "#000000");
+
+    setUpButtons(animation, stackedDataUnpacked);
+    return animation;
+}
+
+
+// Create transition functions
+function transition1(animation, stackedDataUnpacked) {
+    animation.selectAll("rect")
+    .data(stackedDataUnpacked)
+    // .enter()
+    .transition()
+    .duration(3000)
+    .attr("x", function(d) { return x(d.x); })
+    .attr("y", function(d) { return y(d.ymax); })
+    .attr("width", x.bandwidth())
+    .attr("height", function(d) { return y(d.ymin) - y(d.ymax); })
+    .attr("fill", function(d) { return color(d.letter); });
+}
+
+function transition2(animation) {
+    // fade out rectangles
+    animation.selectAll("rect")
+        .transition()
+        .delay(3000)
+        .duration(3000)
+        .style("opacity", 0);
+}
+
+function transition(animation, stackedDataUnpacked) {
+    transition1(animation, stackedDataUnpacked);
+    transition2(animation);
+}
+
+function setUpButtons(animation, stackedDataUnpacked) {
+    const button = document.getElementById("animation-button");
+
+    button.style.backgroundColor = "#4CAF50";
+    button.style.border = "none";
+    button.style.color = "white";
+    button.style.padding = "10px 20px";
+    button.style.textAlign = "center";
+    button.style.textDecoration = "none";
+    button.style.display = "inline-block";
+    button.style.fontSize = "16px";
+    button.style.margin = "10px 2px";
+    button.style.cursor = "pointer";
+    button.style.borderRadius = "5px";
+    button.style.transition = "background-color 0.3s ease";
+
+    button.onmouseover = function() {
+        button.style.backgroundColor = "#45a049"; // Darker green on hover
+    };
+
+    button.onmouseout = function() {
+        button.style.backgroundColor = "#4CAF50"; // Return to original color
+    };
+
+    button.addEventListener("click", () => transition(animation, stackedDataUnpacked))
+    console.log("button", button)
+
+
+    const button2 = document.getElementById("reset-button");
+
+    button2.style.backgroundColor = "#f44336";
+    button2.style.border = "none";
+    button2.style.color = "white";
+    button2.style.padding = "10px 20px";
+    button2.style.textAlign = "center";
+    button2.style.textDecoration = "none";
+    button2.style.display = "inline-block";
+    button2.style.fontSize = "16px";
+    button2.style.margin = "10px 2px";
+    button2.style.cursor = "pointer";
+    button2.style.borderRadius = "5px";
+    button2.style.transition = "background-color 0.3s ease";
+
+    button2.onmouseover = function() {
+        button2.style.backgroundColor = "#e53935"; // Darker red on hover
+    };
+
+    button2.onmouseout = function() {
+        button2.style.backgroundColor = "#f44336"; // Return to original color
+    };
+
+    
+    button2.addEventListener("click", () => {
+        d3.select("#animation").select("svg").remove();
+        const animation2 = setUp(data, stackedDataUnpacked);
+    })
+}
+
+const animation = setUp(data, stackedDataUnpacked);
